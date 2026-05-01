@@ -14,6 +14,23 @@ export default function Spinner({ choices, onWin }: Props) {
 
   const segmentAngle = 360 / choices.length;
 
+  // 🟠 clean same-family colors
+  const getColor = (i: number) => {
+    const shades = [
+      "#f97316",
+      "#fb923c",
+      "#f59e0b",
+      "#fbbf24",
+      "#ea580c",
+      "#f97316cc",
+      "#fb923ccc",
+      "#f59e0bcc",
+      "#fbbf24cc",
+      "#ea580ccc",
+    ];
+    return shades[i % shades.length];
+  };
+
   const spinWheel = () => {
     if (spinning || choices.length === 0) return;
 
@@ -26,14 +43,12 @@ export default function Spinner({ choices, onWin }: Props) {
     const targetAngle =
       index * segmentAngle + segmentAngle / 2;
 
-    // 🎰 CASINO STYLE SPIN INTENSITY
     const finalRotation =
       (4 + multiplier * 3) * 360 +
       (360 - targetAngle + pointerOffset);
 
     setRotation((prev) => prev + finalRotation);
 
-    // ⏱️ dynamic duration based on multiplier
     const duration = 2.5 + multiplier * 0.8;
 
     setTimeout(() => {
@@ -46,7 +61,7 @@ export default function Spinner({ choices, onWin }: Props) {
   return (
     <div className="flex flex-col items-center gap-6">
 
-      {/* 🔘 MULTIPLIER CONTROL */}
+      {/* 🔘 MULTIPLIER */}
       <div className="flex gap-2">
         {[1, 2, 3, 4].map((m) => (
           <button
@@ -72,7 +87,7 @@ export default function Spinner({ choices, onWin }: Props) {
           <div className="w-0 h-0 border-t-[10px] border-b-[10px] border-l-[20px] border-transparent border-l-white drop-shadow-md" />
         </div>
 
-        {/* 🎡 SPINNING WHEEL */}
+        {/* 🎡 SPIN WHEEL */}
         <div
           className="w-full h-full rounded-full border-4 border-white shadow-2xl relative overflow-hidden"
           style={{
@@ -85,14 +100,7 @@ export default function Spinner({ choices, onWin }: Props) {
                 const start = i * segmentAngle;
                 const end = start + segmentAngle;
 
-                const colors = [
-                  "#f97316",
-                  "#fb923c",
-                  "#f59e0b",
-                  "#fbbf24",
-                ];
-
-                return `${colors[i % colors.length]} ${start}deg ${end}deg`;
+                return `${getColor(i)} ${start}deg ${end}deg`;
               })
               .join(",")})`,
           }}
@@ -106,20 +114,20 @@ export default function Spinner({ choices, onWin }: Props) {
             return (
               <div
                 key={i}
-                className={`absolute left-1/2 top-1/2 text-[11px] font-semibold text-white text-center w-24 transition ${
+                className={`absolute left-1/2 top-1/2 text-[10px] font-semibold text-white text-center w-20 transition ${
                   isWinner ? "scale-110 text-yellow-200" : ""
                 }`}
                 style={{
                   transform: `
                     translateX(-50%)
                     rotate(${angle}deg)
-                    translateY(-130px)
+                    translateY(-120px)
                     rotate(-${angle}deg)
                   `,
                 }}
               >
-                {text.length > 12
-                  ? text.slice(0, 12) + "..."
+                {text.length > 10
+                  ? text.slice(0, 10) + "..."
                   : text}
               </div>
             );
