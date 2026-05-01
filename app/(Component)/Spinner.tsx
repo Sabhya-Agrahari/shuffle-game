@@ -14,7 +14,6 @@ export default function Spinner({ choices, onWin }: Props) {
 
   const segmentAngle = 360 / choices.length;
 
-  // 🟠 clean same-family colors
   const getColor = (i: number) => {
     const shades = [
       "#f97316",
