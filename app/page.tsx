@@ -69,7 +69,7 @@ export default function PickAndWinPage() {
         <div className="text-center mb-4 sm:mb-6 md:mb-8">
           <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl animate-bounce mb-1 sm:mb-2">🎁</div>
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
-            Pick & Win
+            Winner Quest
           </h1>
           <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1 sm:mt-2">
             Choose your path to victory!
