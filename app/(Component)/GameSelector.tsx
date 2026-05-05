@@ -23,7 +23,7 @@ export default function GameSelector({ onSelect }: any) {
           flex flex-col items-center justify-center gap-2"
         >
           🎴
-          <span>Shuffle Pick</span>
+          <span>Card</span>
         </button>
 
         {/* Spinner */}
@@ -50,7 +50,35 @@ export default function GameSelector({ onSelect }: any) {
           <span>Scratch Card</span>
         </button>
 
+
+        {/* 🔫 Shooter Game (NEW) */}
+        <button
+          onClick={() => onSelect("shooter")}
+          className="w-44 h-40 rounded-2xl text-white font-bold shadow-xl
+          bg-gradient-to-br from-red-500 to-pink-600
+          hover:scale-105 transition transform duration-300
+          flex flex-col items-center justify-center gap-2"
+        >
+          🔫
+          <span>Shooter</span>
+        </button>
+
+
+         {/* Spinner */}
+        <button
+          onClick={() => onSelect("card")}
+          className="w-44 h-40 rounded-2xl text-white font-bold shadow-xl
+          bg-gradient-to-br from-purple-900 to-pink-600
+          hover:scale-105 transition transform duration-300
+          flex flex-col items-center justify-center gap-2"
+        >
+          🎡
+          <span>Shuffle</span>
+        </button>
+
+
       </div>
+
 
       {/* Hint */}
       <p className="text-sm text-gray-300 mt-2">
