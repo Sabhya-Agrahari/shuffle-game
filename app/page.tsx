@@ -38,7 +38,7 @@ export default function PickAndWinPage() {
   };
 
   const addField = () => {
-    if (choices.length < 12) {
+    if (choices.length < 20) {
       setChoices((prev) => [...prev, ""]);
     }
   };
@@ -81,7 +81,7 @@ export default function PickAndWinPage() {
           <div className="space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in">
             <div className="text-center">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">🎨 Enter Your Choices</h2>
-              <p className="text-gray-400 text-xs sm:text-sm">Add at least 4 items to continue {choices.length >= 12 && "(Max 12)"}</p>
+              <p className="text-gray-400 text-xs sm:text-sm">Add at least 4 items to continue {choices.length >= 20 && "(Max 20)"}</p>
             </div>
 
             <div className="space-y-2 sm:space-y-3 max-h-60 sm:max-h-80 md:max-h-96 overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
@@ -102,15 +102,15 @@ export default function PickAndWinPage() {
 
             <button
               onClick={addField}
-              disabled={choices.length >= 12}
+              disabled={choices.length >= 20}
               className={`w-full font-semibold py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base ${
-                choices.length < 12
+                choices.length < 20
                   ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg"
                   : "bg-gray-700 text-gray-400 cursor-not-allowed"
               }`}
             >
               <span>➕</span>
-              <span>{choices.length >= 12 ? "Maximum 12 Choices" : "Add More Choices"}</span>
+              <span>{choices.length >= 20 ? "Maximum 20 Choices" : "Add More Choices"}</span>
             </button>
 
             {validChoices.length > 0 && (
